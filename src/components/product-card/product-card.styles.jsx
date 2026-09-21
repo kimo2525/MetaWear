@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ProductCartContainer = styled.div`
   width: 100%;
@@ -7,12 +7,15 @@ export const ProductCartContainer = styled.div`
   height: 350px;
   align-items: center;
   position: relative;
-
-  img {
+  a {
     width: 100%;
-    height: 95%;
-    object-fit: cover;
-    margin-bottom: 5px;
+    height  : 100%;
+    img {
+      width: 100%;
+      height: 95%;
+      object-fit: cover;
+      margin-bottom: 5px;
+    }
   }
 
   button {
@@ -44,10 +47,10 @@ export const Footer = styled.div`
 `;
 
 export const Name = styled.span`
-  width: 90%;
+  // width: 90%;
   margin-bottom: 15px;
 `;
 
 export const Price = styled.span`
-  width: 10%;
+  // width: 10%;
 `;

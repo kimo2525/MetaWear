@@ -1,14 +1,15 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const CartIconContainer = styled.div`
-  width: 45px;
+  width: 40px;
   height: 45px;
+  padding-left: 15px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-
+  // right: -10px;
   svg {
     width: 24px;
     height: 24px;

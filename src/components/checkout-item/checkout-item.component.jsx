@@ -1,11 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   clearItemFromCart,
   addItemToCart,
   removeItemFromCart,
-} from '../../store/cart/cart.action';
-import { selectCartItems } from '../../store/cart/cart.selector';
+} from "../../store/cart/cart.action";
+import { selectCartItems } from "../../store/cart/cart.selector";
 
 import {
   CheckoutItemContainer,
@@ -15,10 +15,11 @@ import {
   Arrow,
   Value,
   RemoveButton,
-} from './checkout-item.styles';
+} from "./checkout-item.styles";
+import { Link } from "react-router-dom";
 
 const CheckoutItem = ({ cartItem }) => {
-  const { name, imageUrl, price, quantity } = cartItem;
+  const { name, image, price, quantity } = cartItem;
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
@@ -31,7 +32,11 @@ const CheckoutItem = ({ cartItem }) => {
   return (
     <CheckoutItemContainer>
       <ImageContainer>
-        <img src={imageUrl} alt={`${name}`} />
+        <Link
+          to={`/shop/${cartItem?.character.toLowerCase()}/${cartItem?.slug.toLowerCase()}`}
+        >
+          <img src={image} alt={`${name}`} />
+        </Link>
       </ImageContainer>
       <BaseSpan> {name} </BaseSpan>
       <Quantity>

@@ -9,6 +9,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
+
 import {
   getFirestore,
   doc,
@@ -63,12 +64,41 @@ export const addCollectionAndDocuments = async (
 };
 
 export const getCategoriesAndDocuments = async () => {
-  const collectionRef = collection(db, "categories");
+  const collectionRef = collection(db, "metas");
   const q = query(collectionRef);
 
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map((docSnapshot) => docSnapshot.data());
 };
+
+// export const createUserDocumentFromAuth = async (
+//   userAuth,
+//   additionalInformation = {},
+// ) => {
+//   if (!userAuth) return;
+
+//   const userDocRef = doc(db, "users", userAuth.uid);
+
+//   const userSnapshot = await getDoc(userDocRef);
+
+//   if (!userSnapshot.exists()) {
+//     const { displayName, email } = userAuth;
+//     const createdAt = new Date();
+
+//     try {
+//       await setDoc(userDocRef, {
+//         displayName,
+//         email,
+//         createdAt,
+//         ...additionalInformation,
+//       });
+//     } catch (error) {
+//       console.log("error creating the user", error.message);
+//     }
+//   }
+
+//   return userDocRef;
+// };
 
 export const createUserDocumentFromAuth = async (
   userAuth,
@@ -89,15 +119,19 @@ export const createUserDocumentFromAuth = async (
         displayName,
         email,
         createdAt,
+        mobileNumber: "",
         ...additionalInformation,
       });
     } catch (error) {
       console.log("error creating the user", error.message);
     }
   }
+  // const userSnapshot = await getDoc(userDocRef, "userDocRef");
 
+  console.log(userSnapshot.data(), "userSnapshot.data()");
   return userDocRef;
 };
+// const userDocRef = await createUserDocumentFromAuth(user);
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
