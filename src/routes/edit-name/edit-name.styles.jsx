@@ -58,23 +58,23 @@ export const NameInput = styled.input`
   }
 `;
 
-export const SaveButton = styled.button`
-  margin-top: 32px;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 22px;
+// export const SaveButton = styled.button`
+//   margin-top: 32px;
+//   padding: 10px 18px;
+//   border: none;
+//   border-radius: 22px;
 
-  background-color: #ffd814;
-  color: #111;
+//   background-color: #ffd814;
+//   color: #111;
 
-  font-size: 14px;
-  cursor: pointer;
+//   font-size: 14px;
+//   cursor: pointer;
 
-  &:hover {
-    background-color: #f7ca00;
-  }
+//   &:hover {
+//     background-color: #f7ca00;
+//   }
 
-  &:active {
-    transform: translateY(1px);
-  }
-`;
+//   &:active {
+//     transform: translateY(1px);
+//   }
+// `;

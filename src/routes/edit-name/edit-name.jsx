@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   EditNameContainer,
@@ -8,11 +8,17 @@ import {
   Form,
   Label,
   NameInput,
-  SaveButton,
-} from "./edit-account-name.styles";
+} from "./edit-name.styles";
+import Button, {
+  BUTTON_TYPE_CLASSES,
+} from "../../components/button/button.component";
 
 const EditName = ({ currentName = "" }) => {
   const [name, setName] = useState(currentName);
+
+  useEffect(() => {
+    setName(currentName);
+  }, [currentName]);
 
   const handleChange = (event) => {
     setName(event.target.value);
@@ -38,16 +44,18 @@ const EditName = ({ currentName = "" }) => {
 
         <Form onSubmit={handleSubmit}>
           <Label htmlFor="name">New name</Label>
-
           <NameInput
             id="name"
             name="name"
             type="text"
-            value={name}
+            value={name ? name : ""}
             onChange={handleChange}
           />
-
-          <SaveButton type="submit">Save changes</SaveButton>
+          <br />
+          <Button buttonType={BUTTON_TYPE_CLASSES.edit} type="submit">
+            Save changes
+          </Button>
+          {/* <SaveButton type="submit">Save changes</SaveButton> */}
         </Form>
       </EditNameBox>
     </EditNameContainer>

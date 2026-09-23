@@ -13,7 +13,7 @@ export const BaseButton = styled.button`
   text-transform: uppercase;
   font-family: "Open Sans Condensed";
   font-weight: bolder;
-  border: none;
+  border: 1px solid white;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -33,6 +33,9 @@ export const GoogleSignInButton = styled(BaseButton)`
     background-color: #357ae8;
     border: none;
   }
+`;
+export const EditAccount = styled(BaseButton)`
+  border-radius: 8px;
 `;
 
 export const InvertedButton = styled(BaseButton)`

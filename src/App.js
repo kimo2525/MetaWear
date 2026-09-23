@@ -17,8 +17,9 @@ import Checkout from "./routes/checkout/checkout.component";
 import { setCurrentUser } from "./store/user/user.action";
 import ProductPage from "./routes/product/product.component";
 import Footer from "./components/footer/footer.component";
-import ProfilePage from "./routes/profile-page/profile-page.component";
+import ProfilePage from "./routes/profile-page/profile-page";
 import { getDoc } from "firebase/firestore";
+import EmailActionHandler from "./routes/email-action-handler/email-action-handler";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,7 @@ const App = () => {
         <Route path="auth" element={<Authentication />} />
         <Route path="checkout" element={<Checkout />} />
         <Route path="youraccount/*" element={<ProfilePage />} />
+        <Route path="auth/action" element={<EmailActionHandler />} />
       </Route>
     </Routes>
   );

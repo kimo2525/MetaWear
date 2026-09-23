@@ -18,7 +18,7 @@ const ProfilePageComponent = () => {
     <ProfilePageComponentContainer>
       <InnerComponentContainer>
         <EditField
-          accessToken={"appActionToken"}
+          accessToken={"name/appActionToken"}
           label="Name"
           field={
             currentUser?.displayName ? currentUser?.displayName : "Your Name"
@@ -26,6 +26,7 @@ const ProfilePageComponent = () => {
         />
         <hr />
         <EditField
+          accessToken={"email/editRequest"}
           label="Email"
           field={
             currentUser?.email ? currentUser?.email : "something@something.com"
@@ -35,7 +36,7 @@ const ProfilePageComponent = () => {
         <EditField
           label="Mobile number"
           field={
-            currentUser?.mobileNumber ? currentUser.mobileNumber : "023456789"
+            currentUser?.mobileNumber ? currentUser?.mobileNumber : "023456789"
           }
         />
         <hr />
@@ -45,7 +46,7 @@ const ProfilePageComponent = () => {
           label="Address"
           field={
             currentUser?.address
-              ? currentUser.address
+              ? currentUser?.address
               : "123 asdasdasds asdasasd, 21321"
           }
         />

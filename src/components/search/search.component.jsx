@@ -11,8 +11,7 @@ import {
 import { Link } from "react-router-dom";
 
 const Search = () => {
-  //  const { title, price, image } = product;
-  // const { character, productSlug } = useParams();
+
 
   const [search, setSearch] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -28,8 +27,8 @@ const Search = () => {
     setSearch(e.target.value);
   };
 
-  const item = metasMap[select].filter((item) =>
-    item.title.toLowerCase().includes(search.toLowerCase()),
+  const item = metasMap[select]?.filter((item) =>
+    item?.title?.toLowerCase()?.includes(search.toLowerCase()),
   );
 
   return (
@@ -48,12 +47,12 @@ const Search = () => {
         />
         {isSearchOpen && (
           <SearchResults>
-            {search.trim() &&
-              item.map((ele) => (
+            {search?.trim() &&
+              item?.map((ele) => (
                 <SearchResultItem>
                   <Link
                     onClick={() => setIsSearchOpen(false)}
-                    to={`/shop/${ele?.character.toLowerCase()}/${ele?.slug}`}
+                    to={`/shop/${ele?.character?.toLowerCase()}/${ele?.slug}`}
                   >
                     {ele.title}
                   </Link>

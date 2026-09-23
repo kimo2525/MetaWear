@@ -8,6 +8,9 @@ import {
   signInWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
+  verifyBeforeUpdateEmail,
+  applyActionCode,
+  reload,
 } from "firebase/auth";
 
 import {
@@ -19,6 +22,7 @@ import {
   writeBatch,
   query,
   getDocs,
+  updateDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -62,7 +66,18 @@ export const addCollectionAndDocuments = async (
   await batch.commit();
   console.log("done");
 };
+export const updateUserDocument = async (uid, data) => {
+  const userDocRef = doc(db, "users", uid);
 
+  await updateDoc(userDocRef, data);
+
+  const userSnapshot = await getDoc(userDocRef);
+
+  return {
+    uid,
+    ...userSnapshot.data(),
+  };
+};
 export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, "metas");
   const q = query(collectionRef);
@@ -99,6 +114,28 @@ export const getCategoriesAndDocuments = async () => {
 
 //   return userDocRef;
 // };
+// export const changeUserEmail = async (newEmail) => {
+//   const auth = getAuth();
+//   const user = auth.currentUser;
+
+//   if (!user) return;
+
+//   await verifyBeforeUpdateEmail(user, newEmail);
+// };
+
+export const requestEmailChange = async (newEmail) => {
+  const user = auth.currentUser;
+
+  if (!user) {
+    throw new Error("No authenticated user.");
+  }
+
+  const actionCodeSettings = {
+    url: "http://localhost:3000/youraccount",
+  };
+
+  await verifyBeforeUpdateEmail(user, newEmail, actionCodeSettings);
+};
 
 export const createUserDocumentFromAuth = async (
   userAuth,
