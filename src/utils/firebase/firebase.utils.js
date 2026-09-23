@@ -26,9 +26,9 @@ import {
 } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB9PwfuqVp_de0MQsy-METNOq-zmD28Ws4",
-  authDomain: "crwn-clothing-db-fea6b.firebaseapp.com",
-  projectId: "crwn-clothing-db-fea6b",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
   storageBucket: "crwn-clothing-db-fea6b.firebasestorage.app",
   messagingSenderId: "1095232412314",
   appId: "1:1095232412314:web:113baafae18e1d56ef5d23",
